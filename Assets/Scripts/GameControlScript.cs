@@ -9,7 +9,7 @@ public class GameControlScript : MonoBehaviour {
 	public static GameControlScript instance = null; // instance of GameControl
 	int numberOfBalls = 3; // number of attempts to throw
 	int score = 0; // score counter
-	public int maxScore = 6;
+	public int maxScore = 4;
 	public Text ballsText, scoreText, youLoseText, youWinText; // references to text objects
 	public GameObject ball; // ball game object prefab to instantiate
 	bool noMovingCans; // to check if all af the cans are not moving
@@ -69,9 +69,14 @@ public class GameControlScript : MonoBehaviour {
 	}
 
 	// restart current scene
+
+	void LoadNextScene()
+	{
+		SceneManager.LoadScene ("Level 2");
+	}
 	void RestartGame()
 	{
-		SceneManager.LoadScene ("Bottle Knockdown");
+		SceneManager.LoadScene ("Level 1");
 	}
 
 	// if you Lose
@@ -91,7 +96,7 @@ public class GameControlScript : MonoBehaviour {
 		youWinText.gameObject.SetActive (true);
 
 		// restart game in 4 secconds
-		Invoke ("RestartGame", 4f);
+		Invoke ("LoadNextScene", 4f);
 	}
 
 	// check if all of the cans stoped moving

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Bottle knockdown.sln"
+    "dotnet.defaultSolution": "Bottle-Knockdown.sln"
 }
