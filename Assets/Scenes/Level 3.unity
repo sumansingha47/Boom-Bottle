@@ -1496,7 +1496,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: You Win!!!
+  m_Text: 'Level 3 Complete!!
+
+    Commencing to Level 4'
 --- !u!222 &1214004001
 CanvasRenderer:
   m_ObjectHideFlags: 0
