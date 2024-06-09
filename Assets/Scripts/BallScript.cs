@@ -8,7 +8,7 @@ public class BallScript : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D col)
 	{
 		// check if it is a can or a floor
-		if (col.gameObject.tag.Equals ("Can") || col.gameObject.tag.Equals("Floor")) {
+		if (col.gameObject.tag.Equals ("Bottle") || col.gameObject.tag.Equals("Floor")) {
 			
 			// invoke DestroyBall methid in 3 seconds
 			Invoke ("DestroyBall", 3f);

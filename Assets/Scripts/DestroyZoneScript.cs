@@ -17,7 +17,7 @@ public class DestroyZoneScript : MonoBehaviour {
 		}
 
 		// if it is a can then destroy a can
-		if (col.gameObject.tag.Equals ("Can"))
+		if (col.gameObject.tag.Equals ("Bottle")) // I change "Can" tag to "Bottle" tag
 			Destroy (col.gameObject);
 
 	}

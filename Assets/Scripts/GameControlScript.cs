@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class GameControlScript : MonoBehaviour {
 
 	public static GameControlScript instance = null; // instance of GameControl
-	int numberOfBalls = 3; // number of attempts to throw
+  public int numberOfBalls = 3; // number of attempts to throw
 	int score = 0; // score counter
+	//
+	// public int maxScore = 6;
 	public int maxScore = 6;
+	//
 	public Text ballsText, scoreText, youLoseText, youWinText; // references to text objects
 	public GameObject ball; // ball game object prefab to instantiate
 	bool noMovingCans; // to check if all af the cans are not moving
@@ -69,9 +72,21 @@ public class GameControlScript : MonoBehaviour {
 	}
 
 	// restart current scene
-	void RestartGame()
+	void ReloadLevel()
 	{
-		SceneManager.LoadScene ("Bottle Knockdown");
+		int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+		SceneManager.LoadScene(currentSceneIndex);
+	}
+
+	void LoadNextLevel()
+	{
+		int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+		int nextSceneIndex = currentSceneIndex + 1;
+		if(nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+		{
+			nextSceneIndex = 0;
+		}
+		SceneManager.LoadScene(nextSceneIndex);
 	}
 
 	// if you Lose
@@ -81,7 +96,7 @@ public class GameControlScript : MonoBehaviour {
 		youLoseText.gameObject.SetActive (true);
 
 		// and restart game in 4 secconds
-		Invoke ("RestartGame", 4f);
+		Invoke ("ReloadLevel", 4f);
 	}
 
 	// if you Win
@@ -91,7 +106,7 @@ public class GameControlScript : MonoBehaviour {
 		youWinText.gameObject.SetActive (true);
 
 		// restart game in 4 secconds
-		Invoke ("RestartGame", 4f);
+		Invoke ("LoadNextLevel", 4f);
 	}
 
 	// check if all of the cans stoped moving
@@ -100,7 +115,7 @@ public class GameControlScript : MonoBehaviour {
 		int cansNotMoving = 0; // number of not moving cans
 
 		// get an array of all of the cans in the scene by their tags
-		GameObject[] cansLeft = GameObject.FindGameObjectsWithTag ("Can");
+		GameObject[] cansLeft = GameObject.FindGameObjectsWithTag ("Bottle");
 
 		// check if velocity of each of the can is 0
 		for (int i = 0; i < cansLeft.Length; i++) {
